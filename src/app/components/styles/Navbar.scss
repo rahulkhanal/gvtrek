@@ -6,14 +6,16 @@ nav {
   justify-content: space-around;
   align-items: center;
   background-color: #fff;
-  padding: 1rem 0;
   box-shadow: 0 0 8px #d3d3d3;
+  img {
+    width: 170px;
+  }
   .navlist {
+    padding: 1rem 0;
     list-style: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 1rem;
     flex-wrap: wrap;
     li {
       a {
@@ -22,7 +24,7 @@ nav {
         color: #24335a;
         gap: 3px;
         text-decoration: none;
-        padding: 7px 1rem;
+        padding: 9px 1rem;
         font-weight: 500;
         transition: all 0.1s ease;
         cursor: pointer;
@@ -50,4 +52,34 @@ nav {
   .active {
     border-bottom: 1px solid $primary-color;
   }
+}
+
+// Sub menu
+.show-sub-menu {
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 0 8px #d3d3d3;
+  transform: translateX(-50%);
+  border-radius: 7px;
+  padding: 1rem;
+  left: 50%;
+  top: 4rem;
+  transition: all 0.3s ease;
+  // &::before {
+  //   content: "";
+  //   display: block;
+  //   width: 0;
+  //   height: 0;
+  //   border-left: 5px solid #fff;
+  //   border-right: 5px solid #fff;
+  //   border-bottom: 5px solid #0762A9;
+  //   position: absolute;
+  //   top: -5px;
+  //   left: 50%;
+  //   transform: translateX(-50%);
+  //   z-index: 10;
+  // }
+}
+.hide-sub-menu {
+  display: none;
 }

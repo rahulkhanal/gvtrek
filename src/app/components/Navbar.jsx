@@ -6,53 +6,72 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { RiArrowDropDownLine, RiArrowDropUpLine } from "react-icons/ri";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { useRef } from "react";
+import { useGlobalContext } from "../context/NavContext";
+import { useState } from "react";
 
 export default function Navbar() {
+  const { openSidebar, openSubmenu, closeSubmenu } = useGlobalContext();
   const router = useRouter();
-  const elementRef = useRef(null);
+  const [navArrow, setNavArrow] = useState({
+    Nepal: false,
+    Activities: false,
+    Destination: false,
+    About: false,
+  });
 
-  const handleMouseEnterEvent = () => {
-    const element = elementRef.current;
-    const rect = element.getBoundingClientRect();
-    console.log(rect);
+  const handleNavClick = (e) => {
+    // const navDropIcon = e.target.querySelector(".nav-drop-icon");
+    // if (navDropIcon) {
+    //   navDropIcon.style.transform = "rotate(-180deg)";
+    // }
+
+    const navtitle = e.target.textContent;
+    const cordinate = e.target.getBoundingClientRect();
+    const center = (cordinate.left + cordinate.right) / 2;
+    // const center = cordinate.left;
+    if (navtitle === "Nepal") {
+      setNavArrow({ ...prev, Nepal: true });
+    }
+    const bottom = cordinate.bottom + 16;
+    openSubmenu(navtitle, { center, bottom });
   };
 
   return (
     <nav>
-      <h1>Logo</h1>
-      <ul className="navlist">
-        <li ref={elementRef}>
-          <Link href="/" onClick={handleMouseEnterEvent}>
-            Home
-          </Link>
+      <img src="/materials/logo.png" alt="Great Vision Trek and Expedition" />
+      <ul className="navlist" onMouseLeave={closeSubmenu}>
+        <li onMouseEnter={closeSubmenu}>
+          <Link href="/">Home</Link>
         </li>
-        <li ref={elementRef}>
-          <p onClick={handleMouseEnterEvent}>
-            Nepal <RiArrowDropDownLine size={25} color="#8A96B5" />
+        <li>
+          <p onMouseEnter={handleNavClick}>
+            Nepal{" "}
+            <RiArrowDropDownLine
+              size={25}
+              color="#8A96B5"
+              className="nav-drop-icon"
+              style={{ transform: navArrow ? "rotate(-180deg)" : "" }}
+            />
           </p>
         </li>
-        <li ref={elementRef}>
-          <p onClick={handleMouseEnterEvent}>
+        <li>
+          <p onMouseEnter={handleNavClick}>
             Activities <RiArrowDropDownLine size={25} color="#8A96B5" />
           </p>
         </li>
-        <li ref={elementRef}>
-          <p onClick={handleMouseEnterEvent}>
-            Destination <RiArrowDropDownLine size={25} color="#8A96B5" />
+        <li>
+          <p onMouseEnter={handleNavClick}>
+            Destination
+            <RiArrowDropDownLine size={25} color="#8A96B5" />
           </p>
         </li>
-        <li ref={elementRef}>
-          <Link href="/" onClick={handleMouseEnterEvent}>
-            About Us
-          </Link>
+        <li>
+          <p onMouseEnter={handleNavClick}>
+            About Us <RiArrowDropDownLine size={25} color="#8A96B5" />
+          </p>
         </li>
       </ul>
-      <button
-        className="primary-btn"
-        ref={elementRef}
-        onClick={() => router.push("/contact")}
-      >
+      <button className="primary-btn" onClick={() => router.push("/contact")}>
         Contact Us
       </button>
       <div className="nav-hamburger">
