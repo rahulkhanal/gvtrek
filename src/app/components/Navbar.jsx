@@ -1,5 +1,7 @@
+import "./styles/Navbar.module.scss";
+
 export default function Navbar() {
-    return(
-        <h1>I am navbar</h1>
-    )
+  return <nav>
+    
+  </nav>;
 }
