@@ -1,4 +1,4 @@
-import { Inter } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import "./globals.scss";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -6,6 +6,7 @@ import { NavProvider } from "./context/NavContext";
 import { SubNav } from "./components/SubNav";
 
 const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({ weight: "400", subsets: ["latin"] });
 
 export const metadata = {
   title: "Great Vision Trek and Expedition",
@@ -19,7 +20,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={poppins.className}>
         <NavProvider>
           <Navbar />
           <SubNav />

@@ -29,11 +29,23 @@ export default function Navbar() {
     const cordinate = e.target.getBoundingClientRect();
     const center = (cordinate.left + cordinate.right) / 2;
     // const center = cordinate.left;
-    if (navtitle === "Nepal") {
-      setNavArrow({ ...prev, Nepal: true });
+    // console.log(navtitle);
+    if (navtitle.includes("Nepal")) {
+      setNavArrow((prev) => ({ ...prev, Nepal: true }));
+    } else if (navtitle.includes("Activities")) {
+      setNavArrow((prev) => ({ ...prev, Activities: true }));
+    } else if (navtitle.includes("Destination")) {
+      setNavArrow((prev) => ({ ...prev, Destination: true }));
+    } else if (navtitle.includes("About")) {
+      setNavArrow((prev) => ({ ...prev, About: true }));
+    } else {
+      setNavArrow({});
     }
     const bottom = cordinate.bottom + 16;
     openSubmenu(navtitle, { center, bottom });
+  };
+  const hideArrow = () => {
+    setNavArrow({});
   };
 
   return (
@@ -44,30 +56,59 @@ export default function Navbar() {
           <Link href="/">Home</Link>
         </li>
         <li>
-          <p onMouseEnter={handleNavClick}>
+          <p onMouseEnter={handleNavClick} onMouseLeave={hideArrow}>
             Nepal{" "}
             <RiArrowDropDownLine
               size={25}
               color="#8A96B5"
-              className="nav-drop-icon"
-              style={{ transform: navArrow ? "rotate(-180deg)" : "" }}
+              style={{
+                transform: navArrow.Nepal ? "rotate(-180deg)" : "rotate(0deg)",
+                transition: "all 0.3s ease",
+              }}
             />
           </p>
         </li>
         <li>
-          <p onMouseEnter={handleNavClick}>
-            Activities <RiArrowDropDownLine size={25} color="#8A96B5" />
+          <p onMouseEnter={handleNavClick} onMouseLeave={hideArrow}>
+            Activities{" "}
+            <RiArrowDropDownLine
+              size={25}
+              color="#8A96B5"
+              style={{
+                transform: navArrow.Activities
+                  ? "rotate(-180deg)"
+                  : "rotate(0deg)",
+                transition: "all 0.3s ease",
+              }}
+            />
           </p>
         </li>
         <li>
-          <p onMouseEnter={handleNavClick}>
+          <p onMouseEnter={handleNavClick} onMouseLeave={hideArrow}>
             Destination
-            <RiArrowDropDownLine size={25} color="#8A96B5" />
+            <RiArrowDropDownLine
+              size={25}
+              color="#8A96B5"
+              style={{
+                transform: navArrow.Destination
+                  ? "rotate(-180deg)"
+                  : "rotate(0deg)",
+                transition: "all 0.3s ease",
+              }}
+            />
           </p>
         </li>
         <li>
-          <p onMouseEnter={handleNavClick}>
-            About Us <RiArrowDropDownLine size={25} color="#8A96B5" />
+          <p onMouseEnter={handleNavClick} onMouseLeave={hideArrow}>
+            About Us{" "}
+            <RiArrowDropDownLine
+              size={25}
+              color="#8A96B5"
+              style={{
+                transform: navArrow.About ? "rotate(-180deg)" : "rotate(0deg)",
+                transition: "all 0.3s ease",
+              }}
+            />
           </p>
         </li>
       </ul>

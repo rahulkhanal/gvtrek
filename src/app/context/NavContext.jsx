@@ -6,7 +6,7 @@ const NavContext = createContext();
 const NavProvider = ({ children }) => {
   const [location, setLocation] = useState({});
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isSubmenuOpen, setIsSubmenuOpen] = useState(true);
+  const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
 
   const openSidebar = () => {
     setIsSidebarOpen(true);
