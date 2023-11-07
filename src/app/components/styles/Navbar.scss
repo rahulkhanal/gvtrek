@@ -1,12 +1,21 @@
 $primary-color: #0762a9;
 $secondary-color: #47a767;
 
+@mixin tablet {
+  @media (max-width: 1023px) {
+    @content;
+  }
+}
+
 nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
   background-color: #fff;
-  box-shadow: 0 0 8px #d3d3d3;
+  box-shadow: 0 0 4px #d3d3d3;
+  position: sticky;
+  top: 0;
+  z-index: 100;
   img {
     width: 170px;
   }
@@ -17,6 +26,9 @@ nav {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    @include tablet {
+      display: none;
+    }
     li {
       a {
         display: flex;
@@ -46,8 +58,16 @@ nav {
       }
     }
   }
+  .contact-btn {
+    @include tablet {
+      display: none;
+    }
+  }
   .nav-hamburger {
     display: none;
+    @include tablet {
+      display: block;
+    }
   }
   .active {
     border-bottom: 1px solid $primary-color;
@@ -56,14 +76,15 @@ nav {
 
 // Sub menu
 .show-sub-menu {
-  position: absolute;
+  position: fixed;
   background-color: #fff;
-  box-shadow: 0 0 8px #d3d3d3;
+  box-shadow: 0 0 4px #d3d3d3;
   transform: translateX(-50%);
   padding: 1rem;
   left: 50%;
   top: 4rem;
   transition: all 0.3s ease;
+  z-index: 100;
   // &::before {
   //   content: "";
   //   display: block;

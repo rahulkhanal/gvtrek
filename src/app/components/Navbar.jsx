@@ -112,7 +112,7 @@ export default function Navbar() {
           </p>
         </li>
       </ul>
-      <button className="primary-btn" onClick={() => router.push("/contact")}>
+      <button className="primary-btn contact-btn" onClick={() => router.push("/contact")}>
         Contact Us
       </button>
       <div className="nav-hamburger">

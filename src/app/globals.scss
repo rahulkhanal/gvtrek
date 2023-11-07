@@ -3,8 +3,12 @@
   padding: 0;
   box-sizing: border-box;
 }
-.primary-btn{
-  background-color: #24335A;
+::selection {
+  background-color: #ff7500;
+  color: #0762a9;
+}
+.primary-btn {
+  background-color: #24335a;
   padding: 11px 1rem;
   font-size: 1rem;
   border: none;
@@ -12,6 +16,6 @@
   cursor: pointer;
   border-radius: 7px;
 }
-.primary-btn:hover{
+.primary-btn:hover {
   background-color: #00237a;
 }
