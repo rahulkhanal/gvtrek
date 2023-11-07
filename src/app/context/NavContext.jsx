@@ -5,6 +5,7 @@ const NavContext = createContext();
 
 const NavProvider = ({ children }) => {
   const [location, setLocation] = useState({});
+  const [loader, setLoader] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
 
@@ -13,6 +14,9 @@ const NavProvider = ({ children }) => {
   };
   const closeSidebar = () => {
     setIsSidebarOpen(false);
+  };
+  const alterLoader = () => {
+    setLoader((prev) => !prev);
   };
   const openSubmenu = (text, coordinates) => {
     setIsSubmenuOpen(true);
@@ -34,6 +38,8 @@ const NavProvider = ({ children }) => {
         openSubmenu,
         closeSubmenu,
         location,
+        loader,
+        alterLoader,
       }}
     >
       {children}

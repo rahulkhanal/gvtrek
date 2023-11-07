@@ -6,14 +6,19 @@ import Slider from "react-slick";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import { bannerData } from "@/helpers/rough/rough";
 import Image from "next/image";
-import {
-  Autocomplete,
-  Stack,
-  TextField,
-  ThemeProvider,
-  createTheme,
-} from "@mui/material";
+import { Autocomplete, TextField } from "@mui/material";
 import { useState } from "react";
+import { useGlobalContext } from "./context/NavContext";
+import {
+  BarLoader,
+  BeatLoader,
+  ClipLoader,
+  ClockLoader,
+  DotLoader,
+  FadeLoader,
+  ScaleLoader,
+  SyncLoader,
+} from "react-spinners";
 
 const NextArrow = ({ onClick }) => (
   <div className="custom-arrow-next" onClick={onClick}>
@@ -26,16 +31,21 @@ const PrevArrow = ({ onClick }) => (
     <GrFormPrevious size={20} className="arrow" />
   </div>
 );
+
 export default function Home() {
+  const { loader } = useGlobalContext();
+
+  //Auto Complete
+  const skill = ["A", "B", "C", "D", "E"];
+  const [value, setValue] = useState(null);
+
+  //slick carasoul
   const settings = {
     dots: false,
-    // infinite: true,
     fade: true,
     cssEase: "linear",
     autoplay: true,
     speed: 500,
-    // slidesToShow: 1,
-    // slidesToScroll: 1,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     arrows: false,
@@ -50,11 +60,21 @@ export default function Home() {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     arrows: true,
-    pauseOnHover: false, // Ignore pause on hover
+    pauseOnHover: false,
   };
-
-  const skill = ["A", "B", "C", "D", "E"];
-  const [value, setValue] = useState(null);
+  if (loader) {
+    return (
+      <div style={{ height: "80vh", display: "grid", placeItems: "center" }}>
+        <DotLoader
+          color="#FF7500"
+          loading={loader}
+          size={50}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      </div>
+    );
+  }
   return (
     <>
       <div className="home-carousel">
