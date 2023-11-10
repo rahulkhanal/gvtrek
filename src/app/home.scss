@@ -33,6 +33,10 @@
       align-items: flex-start;
       color: #fff;
       height: 100%;
+      @include tablet{
+        justify-content: space-between;
+        padding: 2rem 7px;
+      }
       @include mobile{
         justify-content: space-between;
         padding: 1rem 7px;

@@ -7,9 +7,9 @@ $secondary-color: #47a767;
   }
 }
 @mixin mobile {
-@media (max-width: 768px)  {
-  @content;
-}
+  @media (max-width: 768px) {
+    @content;
+  }
 }
 
 nav {
@@ -21,8 +21,10 @@ nav {
   position: sticky;
   top: 0;
   z-index: 100;
-  @include mobile{
-    padding: 10px;
+  @include mobile {
+    width: 100vw;
+    padding: 10px 2rem;
+    justify-content: space-between;
   }
   img {
     width: 170px;
@@ -94,6 +96,29 @@ nav {
   top: 4rem;
   transition: all 0.3s ease;
   z-index: 100;
+  display: flex;
+  gap: 2rem;
+  ul {
+    background-color: #e3e8f4;
+    list-style: none;
+    padding: 2rem 7px;
+    border-radius: 4px;
+    li {
+      padding: 14px 10px;
+      margin-bottom: 6px;
+      color: #243363;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      &:hover {
+        background-color: #fff;
+        border-radius: 7px;
+        // scale: 1.03;
+      }
+    }
+  }
   // &::before {
   //   content: "";
   //   display: block;

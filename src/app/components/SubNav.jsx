@@ -1,5 +1,5 @@
 "use client";
-import { useContext, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useGlobalContext } from "../context/NavContext";
 
 export function SubNav() {
@@ -17,11 +17,20 @@ export function SubNav() {
   return (
     <aside
       ref={elementRef}
-      className={isSubmenuOpen ? `show-sub-menu` : `hide-sub-menu`}
+      className={
+        isSubmenuOpen ? `show-sub-menu subnav` : `hide-sub-menu subnav`
+      }
       onMouseEnter={openSubmenu}
       onMouseLeave={closeSubmenu}
     >
-      <h1>sub menu</h1>
+      <ul>
+        <li>Trekking</li>
+        <li>Hiking</li>
+        <li>Climbing & Expedition</li>
+        <li>Tour</li>
+        <li>Day Activities</li>
+      </ul>
+      <div>packages are here</div>
     </aside>
   );
 }
