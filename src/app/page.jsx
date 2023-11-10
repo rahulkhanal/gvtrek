@@ -97,7 +97,7 @@ export default function Home() {
           <div className="hero-overlap">
             <div className="hero-overlap-up">
               <div className="left-hero-overlap-up">
-                <div style={{ textAlign: "left" }}>
+                <div >
                   <h1>
                     We Make Your{" "}
                     <span style={{ color: "#FF7500" }}>Travel</span> Memorable
@@ -110,8 +110,8 @@ export default function Home() {
                     team that serves best trekking experience.
                   </strong>
                 </div>
-                <br />
-                <br />
+                {/* <br />
+                <br /> */}
                 {/* <input type="text" /> */}
                 <Autocomplete
                   options={skill}

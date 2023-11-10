@@ -6,6 +6,11 @@ $secondary-color: #47a767;
     @content;
   }
 }
+@mixin mobile {
+@media (max-width: 768px)  {
+  @content;
+}
+}
 
 nav {
   display: flex;
@@ -16,9 +21,13 @@ nav {
   position: sticky;
   top: 0;
   z-index: 100;
+  @include mobile{
+    padding: 10px;
+  }
   img {
     width: 170px;
   }
+
   .navlist {
     padding: 1rem 0;
     list-style: none;
