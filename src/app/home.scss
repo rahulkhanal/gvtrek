@@ -35,11 +35,11 @@
       height: 100%;
       @include tablet{
         justify-content: space-between;
-        padding: 2rem 7px;
+        padding: 2rem 0rem;
       }
       @include mobile{
+        padding: 1rem 0rem;
         justify-content: space-between;
-        padding: 1rem 7px;
       }
       .input {
         width: 100%;

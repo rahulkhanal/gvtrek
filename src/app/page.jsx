@@ -110,9 +110,6 @@ export default function Home() {
                     team that serves best trekking experience.
                   </strong>
                 </div>
-                {/* <br />
-                <br /> */}
-                {/* <input type="text" /> */}
                 <Autocomplete
                   options={skill}
                   className="input"
