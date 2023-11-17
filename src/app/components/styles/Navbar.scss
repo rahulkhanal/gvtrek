@@ -26,6 +26,11 @@ $secondary-color: #47a767;
     padding: 10px 2rem;
     justify-content: space-between;
   }
+  @include tablet {
+    width: 100vw;
+    padding: 10px 2rem;
+    justify-content: space-between;
+  }
   img {
     width: 170px;
   }
@@ -169,6 +174,23 @@ $secondary-color: #47a767;
       }
     }
   }
+}
+.nav-overlay {
+  position: fixed;
+  display: none;
+  @include mobile {
+    top: 5rem;
+    display: block;
+  }
+  @include tablet {
+    top: 5rem;
+    display: block;
+  }
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba($color: black, $alpha: 0.7);
+  z-index: 999;
 }
 .show-sidebar {
   transform: translateX(0) !important;

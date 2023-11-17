@@ -131,6 +131,13 @@ export default function Navbar() {
           )}
         </div>
       </nav>
+      {showSidebar && (
+        <div
+          className="nav-overlay"
+          onClick={() => setShowSidebar(false)}
+        ></div>
+      )}
+
       <nav className={`sidebar ${showSidebar ? "show-sidebar" : ""}`}>
         <ul>
           <li>
