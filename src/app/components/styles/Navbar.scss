@@ -12,7 +12,7 @@ $secondary-color: #47a767;
   }
 }
 
-nav {
+.bigNav {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -137,4 +137,40 @@ nav {
 }
 .hide-sub-menu {
   display: none;
+}
+
+//sidebar
+.sidebar {
+  width: 290px;
+  background-color: #fff;
+  position: fixed;
+  z-index: 1000;
+  right: 0;
+  height: 100vh;
+  padding: 10px;
+  display: none;
+  transform: translateX(100%);
+  transition: all 0.3s ease;
+  @include tablet {
+    display: block;
+  }
+  @include mobile {
+    display: block;
+  }
+  ul {
+    li {
+      list-style: none;
+      border-bottom: 2px solid #ebebeb;
+      padding: 13px 10px;
+      color: #243363;
+      a {
+        text-decoration: none;
+        color: #243363;
+      }
+    }
+  }
+}
+.show-sidebar {
+  transform: translateX(0) !important;
+  transition: all 0.3s ease;
 }

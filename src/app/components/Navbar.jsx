@@ -10,6 +10,7 @@ import { useGlobalContext } from "../context/NavContext";
 import { useState } from "react";
 
 export default function Navbar() {
+  const [showSidebar, setShowSidebar] = useState(false);
   const { openSidebar, openSubmenu, closeSubmenu, navTitle } =
     useGlobalContext();
 
@@ -44,78 +45,98 @@ export default function Navbar() {
   };
 
   return (
-    <nav>
-      <img src="/materials/logo.png" alt="Great Vision Trek and Expedition" />
-      <ul className="navlist" onMouseLeave={closeSubmenu}>
-        <li onMouseEnter={closeSubmenu}>
-          <Link href="/">Home</Link>
-        </li>
-        <li>
-          <p onMouseEnter={handleNavClick} onMouseLeave={hideArrow}>
-            Nepal
-            <RiArrowDropDownLine
-              size={25}
-              color="#8A96B5"
-              style={{
-                transform: navArrow.Nepal ? "rotate(-180deg)" : "rotate(0deg)",
-                transition: "all 0.3s ease",
-              }}
-            />
-          </p>
-        </li>
-        <li>
-          <p onMouseEnter={handleNavClick} onMouseLeave={hideArrow}>
-            Activities{" "}
-            <RiArrowDropDownLine
-              size={25}
-              color="#8A96B5"
-              style={{
-                transform: navArrow.Activities
-                  ? "rotate(-180deg)"
-                  : "rotate(0deg)",
-                transition: "all 0.3s ease",
-              }}
-            />
-          </p>
-        </li>
-        <li>
-          <p onMouseEnter={handleNavClick} onMouseLeave={hideArrow}>
-            Destination
-            <RiArrowDropDownLine
-              size={25}
-              color="#8A96B5"
-              style={{
-                transform: navArrow.Destination
-                  ? "rotate(-180deg)"
-                  : "rotate(0deg)",
-                transition: "all 0.3s ease",
-              }}
-            />
-          </p>
-        </li>
-        <li>
-          <p onMouseEnter={handleNavClick} onMouseLeave={hideArrow}>
-            About Us{" "}
-            <RiArrowDropDownLine
-              size={25}
-              color="#8A96B5"
-              style={{
-                transform: navArrow.About ? "rotate(-180deg)" : "rotate(0deg)",
-                transition: "all 0.3s ease",
-              }}
-            />
-          </p>
-        </li>
-      </ul>
-      <button
-        className="primary-btn contact-btn"
-        onClick={() => router.push("/contact")}
-      >
-        Contact Us
-      </button>
-      <div className="nav-hamburger">
-        <RxHamburgerMenu size={28} color="#243363" />
-      </div>
-    </nav>
+    <>
+      <nav className="bigNav">
+        <img src="/materials/logo.png" alt="Great Vision Trek and Expedition" />
+        <ul className="navlist" onMouseLeave={closeSubmenu}>
+          <li onMouseEnter={closeSubmenu}>
+            <Link href="/">Home</Link>
+          </li>
+          <li>
+            <p onMouseEnter={handleNavClick} onMouseLeave={hideArrow}>
+              Nepal
+              <RiArrowDropDownLine
+                size={25}
+                color="#8A96B5"
+                style={{
+                  transform: navArrow.Nepal
+                    ? "rotate(-180deg)"
+                    : "rotate(0deg)",
+                  transition: "all 0.3s ease",
+                }}
+              />
+            </p>
+          </li>
+          <li>
+            <p onMouseEnter={handleNavClick} onMouseLeave={hideArrow}>
+              Activities{" "}
+              <RiArrowDropDownLine
+                size={25}
+                color="#8A96B5"
+                style={{
+                  transform: navArrow.Activities
+                    ? "rotate(-180deg)"
+                    : "rotate(0deg)",
+                  transition: "all 0.3s ease",
+                }}
+              />
+            </p>
+          </li>
+          <li>
+            <p onMouseEnter={handleNavClick} onMouseLeave={hideArrow}>
+              Destination
+              <RiArrowDropDownLine
+                size={25}
+                color="#8A96B5"
+                style={{
+                  transform: navArrow.Destination
+                    ? "rotate(-180deg)"
+                    : "rotate(0deg)",
+                  transition: "all 0.3s ease",
+                }}
+              />
+            </p>
+          </li>
+          <li>
+            <p onMouseEnter={handleNavClick} onMouseLeave={hideArrow}>
+              About Us{" "}
+              <RiArrowDropDownLine
+                size={25}
+                color="#8A96B5"
+                style={{
+                  transform: navArrow.About
+                    ? "rotate(-180deg)"
+                    : "rotate(0deg)",
+                  transition: "all 0.3s ease",
+                }}
+              />
+            </p>
+          </li>
+        </ul>
+        <button
+          className="primary-btn contact-btn"
+          onClick={() => router.push("/contact")}
+        >
+          Contact Us
+        </button>
+        <div
+          className="nav-hamburger"
+          onClick={() => setShowSidebar((prev) => !prev)}
+        >
+          <RxHamburgerMenu size={28} color="#243363" />
+        </div>
+      </nav>
+      <nav className={`sidebar ${showSidebar ? "show-sidebar" : ""}`}>
+        <ul>
+          <li>
+            <Link href="/">Home</Link>
+          </li>
+          <li>Nepal</li>
+          <li>Activities</li>
+          <li>Destination</li>
+          <li>About Us</li>
+        </ul>
+      </nav>
+    </>
   );
 }
