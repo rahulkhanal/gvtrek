@@ -101,10 +101,11 @@ nav {
   ul {
     background-color: #e3e8f4;
     list-style: none;
-    padding: 2rem 7px;
+    padding: 1rem 10px;
     border-radius: 4px;
+    min-width: 200px;
     li {
-      padding: 14px 10px;
+      padding: 10px;
       margin-bottom: 6px;
       color: #243363;
       font-weight: bold;

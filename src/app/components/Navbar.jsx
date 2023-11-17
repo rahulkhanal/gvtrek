@@ -10,7 +10,9 @@ import { useGlobalContext } from "../context/NavContext";
 import { useState } from "react";
 
 export default function Navbar() {
-  const { openSidebar, openSubmenu, closeSubmenu } = useGlobalContext();
+  const { openSidebar, openSubmenu, closeSubmenu, navTitle } =
+    useGlobalContext();
+
   const router = useRouter();
   const [navArrow, setNavArrow] = useState({
     Nepal: false,
@@ -20,16 +22,9 @@ export default function Navbar() {
   });
 
   const handleNavClick = (e) => {
-    // const navDropIcon = e.target.querySelector(".nav-drop-icon");
-    // if (navDropIcon) {
-    //   navDropIcon.style.transform = "rotate(-180deg)";
-    // }
-
     const navtitle = e.target.textContent;
     const cordinate = e.target.getBoundingClientRect();
     const center = (cordinate.left + cordinate.right) / 2;
-    // const center = cordinate.left;
-    // console.log(navtitle);
     if (navtitle.includes("Nepal")) {
       setNavArrow((prev) => ({ ...prev, Nepal: true }));
     } else if (navtitle.includes("Activities")) {
@@ -57,7 +52,7 @@ export default function Navbar() {
         </li>
         <li>
           <p onMouseEnter={handleNavClick} onMouseLeave={hideArrow}>
-            Nepal{" "}
+            Nepal
             <RiArrowDropDownLine
               size={25}
               color="#8A96B5"
@@ -112,11 +107,14 @@ export default function Navbar() {
           </p>
         </li>
       </ul>
-      <button className="primary-btn contact-btn" onClick={() => router.push("/contact")}>
+      <button
+        className="primary-btn contact-btn"
+        onClick={() => router.push("/contact")}
+      >
         Contact Us
       </button>
       <div className="nav-hamburger">
-        <RxHamburgerMenu size={28} />
+        <RxHamburgerMenu size={28} color="#243363" />
       </div>
     </nav>
   );

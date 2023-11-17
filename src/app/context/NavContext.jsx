@@ -8,6 +8,7 @@ const NavProvider = ({ children }) => {
   const [loader, setLoader] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
+  const [navTitle, setNavTitle] = useState("");
 
   const openSidebar = () => {
     setIsSidebarOpen(true);
@@ -20,6 +21,9 @@ const NavProvider = ({ children }) => {
   };
   const openSubmenu = (text, coordinates) => {
     setIsSubmenuOpen(true);
+    if (text) {
+      setNavTitle(text);
+    }
     if (coordinates) {
       setLocation(coordinates);
     }
@@ -40,6 +44,7 @@ const NavProvider = ({ children }) => {
         location,
         loader,
         alterLoader,
+        navTitle,
       }}
     >
       {children}
