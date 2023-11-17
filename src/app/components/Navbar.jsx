@@ -4,6 +4,7 @@ import Link from "next/link";
 import "./styles/Navbar.scss";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { RiArrowDropDownLine, RiArrowDropUpLine } from "react-icons/ri";
+import { RxCrossCircled } from "react-icons/rx";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useGlobalContext } from "../context/NavContext";
@@ -123,7 +124,11 @@ export default function Navbar() {
           className="nav-hamburger"
           onClick={() => setShowSidebar((prev) => !prev)}
         >
-          <RxHamburgerMenu size={28} color="#243363" />
+          {showSidebar ? (
+            <RxCrossCircled size={30} color="red" />
+          ) : (
+            <RxHamburgerMenu size={28} color="#243363" />
+          )}
         </div>
       </nav>
       <nav className={`sidebar ${showSidebar ? "show-sidebar" : ""}`}>
