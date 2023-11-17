@@ -156,6 +156,7 @@ $secondary-color: #47a767;
   display: none;
   transform: translateX(100%);
   transition: all 0.3s ease;
+  border-top: 3px solid #ff7500;
   @include tablet {
     display: block;
   }
@@ -171,6 +172,7 @@ $secondary-color: #47a767;
       a {
         text-decoration: none;
         color: #243363;
+        display: block;
       }
     }
   }
