@@ -169,6 +169,9 @@ $secondary-color: #47a767;
       border-bottom: 2px solid #ebebeb;
       padding: 13px 10px;
       color: #243363;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       a {
         text-decoration: none;
         color: #243363;

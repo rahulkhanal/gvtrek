@@ -4,6 +4,7 @@ import Link from "next/link";
 import "./styles/Navbar.scss";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { RiArrowDropDownLine, RiArrowDropUpLine } from "react-icons/ri";
+import { GrFormNext } from "react-icons/gr";
 import { RxCrossCircled } from "react-icons/rx";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
@@ -143,10 +144,18 @@ export default function Navbar() {
           <li>
             <Link href="/">Home</Link>
           </li>
-          <li>Nepal</li>
-          <li>Activities</li>
-          <li>Destination</li>
-          <li>About Us</li>
+          <li>
+            Nepal <GrFormNext />
+          </li>
+          <li>
+            Activities <GrFormNext />
+          </li>
+          <li>
+            Destination <GrFormNext />
+          </li>
+          <li>
+            About Us <GrFormNext />
+          </li>
         </ul>
       </nav>
     </>
