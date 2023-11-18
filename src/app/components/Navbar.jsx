@@ -3,6 +3,7 @@
 import Link from "next/link";
 import "./styles/Navbar.scss";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { RiMenu5Fill } from "react-icons/ri";
 import { RiArrowDropDownLine, RiArrowDropUpLine } from "react-icons/ri";
 import { GrFormNext } from "react-icons/gr";
 import { RxCrossCircled } from "react-icons/rx";
@@ -128,7 +129,8 @@ export default function Navbar() {
           {showSidebar ? (
             <RxCrossCircled size={30} color="red" />
           ) : (
-            <RxHamburgerMenu size={28} color="#243363" />
+            // <RxHamburgerMenu size={28} color="#243363" />
+            <RiMenu5Fill size={28} color="#243363" />
           )}
         </div>
       </nav>
