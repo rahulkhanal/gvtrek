@@ -198,7 +198,9 @@ export default function Navbar() {
             Activities{" "}
             <GrFormNext
               style={{
-                transform: dropSideBar.Activities ? "rotate(90deg)" : "rotate(0deg)",
+                transform: dropSideBar.Activities
+                  ? "rotate(90deg)"
+                  : "rotate(0deg)",
                 transition: "all 0.3s ease",
               }}
             />
@@ -210,9 +212,24 @@ export default function Navbar() {
               })}
             </ol>
           )}
-          <li>
-            Destination <GrFormNext />
+          <li onClick={() => handleMobileSideBarDrop("Destination")}>
+            Destination{" "}
+            <GrFormNext
+              style={{
+                transform: dropSideBar.Destination
+                  ? "rotate(90deg)"
+                  : "rotate(0deg)",
+                transition: "all 0.3s ease",
+              }}
+            />
           </li>
+          {dropSideBar.Destination && (
+            <ol>
+              {DestinationNavigation.map((item, index) => {
+                return <li key={index}>{item.title}</li>;
+              })}
+            </ol>
+          )}
           <li>
             About Us <GrFormNext />
           </li>

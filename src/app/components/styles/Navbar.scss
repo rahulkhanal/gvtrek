@@ -165,6 +165,15 @@ $secondary-color: #47a767;
     display: block;
   }
   ul {
+    height: 100%;
+    overflow: auto;
+    padding-bottom: 1rem;
+    /* Hide scrollbar */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
     li {
       list-style: none;
       border-bottom: 2px solid #ebebeb;
