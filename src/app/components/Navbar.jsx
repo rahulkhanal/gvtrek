@@ -12,11 +12,41 @@ import { useRouter } from "next/navigation";
 import { useGlobalContext } from "../context/NavContext";
 import { useState } from "react";
 
+const NepalNavigation = [
+  { title: "Trekking", path: "/" },
+  { title: "Hiking", path: "/" },
+  { title: "Climbing & Expedition", path: "/" },
+  { title: "Tour", path: "/" },
+  { title: "Day Activities", path: "/" },
+];
+const DestinationNavigation = [
+  { title: "Bhutan", path: "/" },
+  { title: "India", path: "/" },
+];
+const ActivitiesNavigation = [
+  { title: "Trekking and Hiking", path: "/" },
+  { title: "Bungee Jumping", path: "/" },
+  { title: "Mount Climbing", path: "/" },
+  { title: "Rafting", path: "/" },
+  { title: "City Sightseeing", path: "/" },
+];
+const AboutNavigation = [
+  { title: "Company Detail", path: "/" },
+  { title: "Our Team", path: "/" },
+  { title: "Our Documents", path: "/" },
+  { title: "Company Milestones", path: "/" },
+];
+
 export default function Navbar() {
   const [showSidebar, setShowSidebar] = useState(false);
   const { openSidebar, openSubmenu, closeSubmenu, navTitle } =
     useGlobalContext();
-
+  const [dropSideBar, setDropSideBar] = useState({
+    Nepal: false,
+    Activities: false,
+    Destination: false,
+    About: false,
+  });
   const router = useRouter();
   const [navArrow, setNavArrow] = useState({
     Nepal: false,
@@ -46,7 +76,9 @@ export default function Navbar() {
   const hideArrow = () => {
     setNavArrow({});
   };
-
+  function handleMobileSideBarDrop(arg) {
+    setDropSideBar((prev) => ({ ...prev, [arg]: !prev[arg] }));
+  }
   return (
     <>
       <nav className="bigNav">
@@ -146,9 +178,23 @@ export default function Navbar() {
           <li>
             <Link href="/">Home</Link>
           </li>
-          <li>
-            Nepal <GrFormNext />
+          <li onClick={() => handleMobileSideBarDrop("Nepal")}>
+            Nepal
+            <GrFormNext
+              style={{
+                transform: dropSideBar.Nepal ? "rotate(90deg)" : "rotate(0deg)",
+                transition: "all 0.3s ease",
+              }}
+            />
           </li>
+          {dropSideBar.Nepal && (
+            <ol>
+              {NepalNavigation.map((item, index) => {
+                return <li key={index}>{item.title}</li>;
+              })}
+            </ol>
+          )}
+
           <li>
             Activities <GrFormNext />
           </li>

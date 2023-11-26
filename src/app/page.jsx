@@ -65,13 +65,18 @@ export default function Home() {
   if (loader) {
     return (
       <div style={{ height: "80vh", display: "grid", placeItems: "center" }}>
-        <DotLoader
-          color="#FF7500"
-          loading={loader}
-          size={50}
-          aria-label="Loading Spinner"
-          data-testid="loader"
-        />
+        <center>
+          <img src="/materials/logo.png" alt="..." />
+          <br />
+          <br />
+          <ScaleLoader
+            color="#0762A9"
+            loading={loader}
+            size={50}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        </center>
       </div>
     );
   }
@@ -88,6 +93,7 @@ export default function Home() {
                   alt={item.title}
                   width={1920}
                   height={600}
+                  priority={true}
                 />
               </article>
             );
@@ -97,7 +103,7 @@ export default function Home() {
           <div className="hero-overlap">
             <div className="hero-overlap-up">
               <div className="left-hero-overlap-up">
-                <div >
+                <div>
                   <h1>
                     We Make Your{" "}
                     <span style={{ color: "#FF7500" }}>Travel</span> Memorable
@@ -135,6 +141,7 @@ export default function Home() {
                           alt={item.title}
                           width={700}
                           height={300}
+                          priority={true}
                         />
                         <h4 style={{ padding: "7px", color: "#0762A9" }}>
                           {item.title}
