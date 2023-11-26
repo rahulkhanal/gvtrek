@@ -194,10 +194,22 @@ export default function Navbar() {
               })}
             </ol>
           )}
-
-          <li>
-            Activities <GrFormNext />
+          <li onClick={() => handleMobileSideBarDrop("Activities")}>
+            Activities{" "}
+            <GrFormNext
+              style={{
+                transform: dropSideBar.Activities ? "rotate(90deg)" : "rotate(0deg)",
+                transition: "all 0.3s ease",
+              }}
+            />
           </li>
+          {dropSideBar.Activities && (
+            <ol>
+              {ActivitiesNavigation.map((item, index) => {
+                return <li key={index}>{item.title}</li>;
+              })}
+            </ol>
+          )}
           <li>
             Destination <GrFormNext />
           </li>
