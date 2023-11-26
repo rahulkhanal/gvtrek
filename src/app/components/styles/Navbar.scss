@@ -167,7 +167,7 @@ $secondary-color: #47a767;
   ul {
     height: 100%;
     overflow: auto;
-    padding-bottom: 1rem;
+    padding-bottom: 50vh;
     /* Hide scrollbar */
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -190,6 +190,7 @@ $secondary-color: #47a767;
     }
     ol {
       padding-left: 1rem;
+      background-color: #fcfafa;
     }
   }
 }
