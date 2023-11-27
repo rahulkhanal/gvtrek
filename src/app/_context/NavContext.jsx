@@ -32,6 +32,10 @@ const NavProvider = ({ children }) => {
     setIsSubmenuOpen(false);
   };
 
+  document.body.addEventListener("click", () => {
+    setNavTitle("");
+    setIsSubmenuOpen(false);
+  });
   return (
     <NavContext.Provider
       value={{

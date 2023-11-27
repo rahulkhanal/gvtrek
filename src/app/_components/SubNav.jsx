@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { useGlobalContext } from "../context/NavContext";
+import { useGlobalContext } from "../_context/NavContext";
 
 const NepalNavigation = [
   { title: "Trekking", path: "/" },
@@ -61,7 +61,9 @@ export function SubNav() {
         isSubmenuOpen ? `show-sub-menu subnav` : `hide-sub-menu subnav`
       }
       onMouseEnter={() => openSubmenu(null)}
-      onMouseLeave={closeSubmenu}
+      onMouseLeave={() => {
+        closeSubmenu;
+      }}
     >
       <ul>
         {subNav.map((item, index) => {

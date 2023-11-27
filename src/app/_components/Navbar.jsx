@@ -9,7 +9,7 @@ import { GrFormNext } from "react-icons/gr";
 import { RxCrossCircled } from "react-icons/rx";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { useGlobalContext } from "../context/NavContext";
+import { useGlobalContext } from "../_context/NavContext";
 import { useState } from "react";
 
 const NepalNavigation = [
@@ -82,9 +82,13 @@ export default function Navbar() {
   return (
     <>
       <nav className="bigNav">
-        <img src="/materials/logo.png" alt="Great Vision Trek and Expedition" />
+        <img
+          src="/materials/logo.png"
+          alt="Great Vision Trek and Expedition"
+          onClick={() => router.push("/")}
+        />
         <ul className="navlist" onMouseLeave={closeSubmenu}>
-          <li onMouseEnter={closeSubmenu}>
+          <li onMouseEnter={closeSubmenu} onClick={() => router.push("/")}>
             <Link href="/">Home</Link>
           </li>
           <li>
@@ -94,9 +98,10 @@ export default function Navbar() {
                 size={25}
                 color="#8A96B5"
                 style={{
-                  transform: navArrow.Nepal
-                    ? "rotate(-180deg)"
-                    : "rotate(0deg)",
+                  transform:
+                    navTitle.trim() == "Nepal"
+                      ? "rotate(-180deg)"
+                      : "rotate(0deg)",
                   transition: "all 0.3s ease",
                 }}
               />
@@ -109,9 +114,10 @@ export default function Navbar() {
                 size={25}
                 color="#8A96B5"
                 style={{
-                  transform: navArrow.Activities
-                    ? "rotate(-180deg)"
-                    : "rotate(0deg)",
+                  transform:
+                    navTitle.trim() == "Activities"
+                      ? "rotate(-180deg)"
+                      : "rotate(0deg)",
                   transition: "all 0.3s ease",
                 }}
               />
@@ -124,9 +130,10 @@ export default function Navbar() {
                 size={25}
                 color="#8A96B5"
                 style={{
-                  transform: navArrow.Destination
-                    ? "rotate(-180deg)"
-                    : "rotate(0deg)",
+                  transform:
+                    navTitle.trim() == "Destination"
+                      ? "rotate(-180deg)"
+                      : "rotate(0deg)",
                   transition: "all 0.3s ease",
                 }}
               />
@@ -139,9 +146,10 @@ export default function Navbar() {
                 size={25}
                 color="#8A96B5"
                 style={{
-                  transform: navArrow.About
-                    ? "rotate(-180deg)"
-                    : "rotate(0deg)",
+                  transform:
+                    navTitle.trim() == "About Us"
+                      ? "rotate(-180deg)"
+                      : "rotate(0deg)",
                   transition: "all 0.3s ease",
                 }}
               />

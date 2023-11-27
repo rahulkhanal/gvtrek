@@ -8,17 +8,8 @@ import { bannerData } from "@/helpers/rough/rough";
 import Image from "next/image";
 import { Autocomplete, TextField } from "@mui/material";
 import { useState } from "react";
-import { useGlobalContext } from "./context/NavContext";
-import {
-  BarLoader,
-  BeatLoader,
-  ClipLoader,
-  ClockLoader,
-  DotLoader,
-  FadeLoader,
-  ScaleLoader,
-  SyncLoader,
-} from "react-spinners";
+import { useGlobalContext } from "./_context/NavContext";
+import { ScaleLoader } from "react-spinners";
 
 const NextArrow = ({ onClick }) => (
   <div className="custom-arrow-next" onClick={onClick}>

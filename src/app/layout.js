@@ -1,9 +1,9 @@
 import { Inter, Poppins } from "next/font/google";
 import "./globals.scss";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import { NavProvider } from "./context/NavContext";
-import { SubNav } from "./components/SubNav";
+import Navbar from "./_components/Navbar";
+import Footer from "./_components/Footer";
+import { NavProvider } from "./_context/NavContext";
+import { SubNav } from "./_components/SubNav";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
