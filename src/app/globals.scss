@@ -9,15 +9,17 @@
 }
 body{
   width: 100vw;
+  overflow-x: hidden;
 }
 .primary-btn {
-  background-color: #24335a;
-  padding: 11px 1rem;
-  font-size: 1rem;
+  background-color: #267DFF;
+  padding: 8px 1rem;
+  font-size: 15px;
+  font-weight: 700;
   border: none;
   color: #fff;
   cursor: pointer;
-  border-radius: 7px;
+  border-radius: 100px;
 }
 .primary-btn:hover {
   background-color: #00237a;

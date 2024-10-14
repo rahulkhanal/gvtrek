@@ -9,9 +9,14 @@ import Image from "next/image";
 import { useState } from "react";
 import { useGlobalContext } from "./_context/NavContext";
 import { BarLoader, ScaleLoader } from "react-spinners";
-import { Autocomplete, Box, Center, Flex, Select } from "@mantine/core";
+import { Autocomplete, Box, Button, Center, Divider, Flex, Grid, Group, Paper, Select, Space, Text, Title } from "@mantine/core";
 import Lottie from "react-lottie";
 import * as animationData from '../../loading.json'
+import { MdOutlineTravelExplore } from "react-icons/md";
+import { MdModeOfTravel } from "react-icons/md";
+import { IoMdArrowForward } from "react-icons/io";
+import { LuClock3 } from "react-icons/lu";
+import { FiPieChart } from "react-icons/fi";
 
 const NextArrow = ({ onClick }) => (
   <div className="custom-arrow-next" onClick={onClick}>
@@ -68,21 +73,21 @@ export default function Home() {
   if (loader) {
     return (
       <Flex w={200} m={'auto'} direction='column' align={'center'} justify={'center'} mt={'xl'}>
-        <Lottie options={defaultOptions} height={250} width={200} style={{marginTop: "100px"}}/>
+        <Lottie options={defaultOptions} height={250} width={200} style={{ marginTop: "100px" }} />
         <BarLoader
           color={'blue'}
           loading={true}
           size={200}
           aria-label="Loading Spinner"
           data-testid="loader"
-          cssOverride={{marginTop: "-70px"}}
+          cssOverride={{ marginTop: "-70px" }}
         />
       </Flex>
     );
   }
   return (
     <>
-      <div className="home-carousel" style={{width: "98%", height:'', margin: "auto", borderRadius: "30px", overflow: "hidden"}}>
+      <div className="home-carousel" style={{ width: "98%", height: '', margin: "auto", borderRadius: "30px", overflow: "hidden" }}>
         <Slider {...settings}>
           {bannerData.map((item, index) => {
             return (
@@ -110,7 +115,7 @@ export default function Home() {
                   </h1>
                   <br />
                   <strong>
-                    Great Vision Trek and Expedition Pvt.Ltd welcomes you all
+                    Paurakh Travels welcomes you all
                     with great and adventurous trekking and Expedition all over
                     Nepal. Our company includes experienced and nature conscious
                     team that serves best trekking experience.
@@ -119,7 +124,7 @@ export default function Home() {
                 <Select
                   label="Search your destination"
                   placeholder="Search here"
-                  data={['React', 'Angular', 'Vue', 'Svelte']}
+                  data={['Annapurna', 'Manaslu', 'Dhaulagiri']}
                   onChange={handleDestinationSelect}
                   searchable
                 />
@@ -148,6 +153,71 @@ export default function Home() {
           </div>
         </main>
       </div>
+      <Space h={'xl'} />
+      <Flex py={80} px={200} justify={'space-between'} align={'center'}>
+        <Box w={700}>
+          <Title c='#0057D9' size={60}>Paurakh Travels</Title>
+          <Text>Are you ready to explore the world, try new experiences, and make unforgettable memories? At Paurakh Travels, we offer exciting packages that bring you closer to nature, adventure, and discovery. Whether you're looking for thrilling treks through the mountains, relaxing trips to breathtaking destinations, or adrenaline-pumping activities, we have something for everyone.</Text>
+          <Space h={'lg'} />
+          <Button
+            variant="light"
+            leftSection={<MdOutlineTravelExplore size={14} />}
+            rightSection={<IoMdArrowForward size={14} />}
+          >
+            Explore by your preference
+          </Button>
+        </Box>
+        <Flex direction={'column'} bg={'#F0F6FF'} p={'xl'} align={'center'} w={600}>
+          <MdModeOfTravel size={50} />
+          <Title size={22}>Are you planning to travel in Nepal ?</Title>
+          <Space h={'lg'} />
+          <Text ta={'center'}>With Paurakh Travels, booking your next trip is easy and stress-free. Let us plan for you.</Text>
+          <Space h={'lg'} />
+          <Button>Take a free consultant</Button>
+        </Flex>
+      </Flex>
+
+      {/* Popular package */}
+      <Box bg={'#F0F6FF'} px={200} py={100}>
+        <Title size={'50'} fw={400}>Popular Tour Package</Title>
+        <Text w={700}>
+          Explore the beauty of Nepal with Luxury Holidays Nepal, your trusted partner for unforgettable treks and tours. From breathtaking Everest views to rich cultural experiences, we ensure top-notch service and ethical adventures. Book your dream holiday now!
+        </Text>
+        <Grid py={10} gutter={30}>
+          {
+            ['', '', '', ''].map(() => {
+              return (
+                <Grid.Col span={4}>
+                  <Paper withBorder style={{ backgroundColor: '#fff', borderRadius: '10px', overflow: 'hidden' }}>
+                    <Image src={'/imgs/shownepal.jpg'} alt="package" width={'1000'} layout="responsive" height={200} />
+                    <Flex direction={'column'}>
+                      <Space w={'lg'} />
+                      <Flex direction={'column'} p={10}>
+                        <Text fw="600" size="xl">Annapurna Base Camp</Text>
+                        <Group align="center">
+                          <LuClock3 /><Text>Duration: 7 Days</Text>
+                        </Group>
+                        <Divider my="sm" />
+                        <Flex justify={'space-between'} align={'center'}>
+                          <Flex direction={'column'} w={300}>
+                            <Text fw="400" size="sm">
+                              Starting from
+                            </Text>
+                            <Text c={'#1C7ED6'} size="lg">
+                              <b >$ 500</b>
+                            </Text>
+                          </Flex>
+                          <Button w={150}>Book Now</Button>
+                        </Flex>
+                      </Flex>
+                    </Flex>
+                  </Paper>
+                </Grid.Col>
+              )
+            })
+          }
+        </Grid>
+      </Box>
     </>
   );
 }
