@@ -11,6 +11,8 @@
 
 .home-carousel {
   position: relative;
+  height: 600px;
+  top: 10px;
   @include tablet {
     height: 100vh;
   }

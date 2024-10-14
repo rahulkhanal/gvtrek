@@ -11,6 +11,7 @@ import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useGlobalContext } from "../_context/NavContext";
 import { useState } from "react";
+import Image from "next/image";
 
 const NepalNavigation = [
   { title: "Trekking", path: "/" },
@@ -82,7 +83,9 @@ export default function Navbar() {
   return (
     <>
       <nav className="bigNav">
-        <img
+        <Image
+          width={'400'}
+          height={'60'}
           src="/materials/logo.png"
           alt="Great Vision Trek and Expedition"
           onClick={() => router.push("/")}

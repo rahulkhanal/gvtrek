@@ -1,5 +1,5 @@
 {
-  "name": "gvtrek",
+  "name": "paurakhtravels",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,13 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@mui/material": "^5.14.17",
-    "next": "14.0.1",
+    "@mantine/core": "^7.13.2",
+    "@mantine/hooks": "^7.13.2",
+    "next": "14.2.15",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^4.11.0",
+    "react-lottie": "^1.2.4",
     "react-slick": "^0.29.0",
     "react-spinners": "^0.13.8",
     "slick-carousel": "^1.8.1"

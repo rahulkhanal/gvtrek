@@ -6,10 +6,12 @@ import Slider from "react-slick";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import { bannerData } from "@/helpers/rough/rough";
 import Image from "next/image";
-import { Autocomplete, TextField } from "@mui/material";
 import { useState } from "react";
 import { useGlobalContext } from "./_context/NavContext";
-import { ScaleLoader } from "react-spinners";
+import { BarLoader, ScaleLoader } from "react-spinners";
+import { Autocomplete, Box, Center, Flex, Select } from "@mantine/core";
+import Lottie from "react-lottie";
+import * as animationData from '../../loading.json'
 
 const NextArrow = ({ onClick }) => (
   <div className="custom-arrow-next" onClick={onClick}>
@@ -26,9 +28,19 @@ const PrevArrow = ({ onClick }) => (
 export default function Home() {
   const { loader } = useGlobalContext();
 
-  //Auto Complete
-  const skill = ["A", "B", "C", "D", "E"];
-  const [value, setValue] = useState(null);
+  function handleDestinationSelect(e) {
+    console.log(e)
+  }
+
+  // Lottifie
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  };
 
   //slick carasoul
   const settings = {
@@ -55,25 +67,22 @@ export default function Home() {
   };
   if (loader) {
     return (
-      <div style={{ height: "80vh", display: "grid", placeItems: "center" }}>
-        <center>
-          <img src="/materials/logo.png" alt="..." />
-          <br />
-          <br />
-          <ScaleLoader
-            color="#0762A9"
-            loading={loader}
-            size={50}
-            aria-label="Loading Spinner"
-            data-testid="loader"
-          />
-        </center>
-      </div>
+      <Flex w={200} m={'auto'} direction='column' align={'center'} justify={'center'} mt={'xl'}>
+        <Lottie options={defaultOptions} height={250} width={200} style={{marginTop: "100px"}}/>
+        <BarLoader
+          color={'blue'}
+          loading={true}
+          size={200}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+          cssOverride={{marginTop: "-70px"}}
+        />
+      </Flex>
     );
   }
   return (
     <>
-      <div className="home-carousel">
+      <div className="home-carousel" style={{width: "98%", height:'', margin: "auto", borderRadius: "30px", overflow: "hidden"}}>
         <Slider {...settings}>
           {bannerData.map((item, index) => {
             return (
@@ -107,19 +116,12 @@ export default function Home() {
                     team that serves best trekking experience.
                   </strong>
                 </div>
-                <Autocomplete
-                  options={skill}
-                  className="input"
-                  key="unique-key-for-Autocomplete"
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      variant="standard"
-                      placeholder="Search Here"
-                    />
-                  )}
-                  value={value}
-                  onChange={(event, newValue) => setValue(newValue)}
+                <Select
+                  label="Search your destination"
+                  placeholder="Search here"
+                  data={['React', 'Angular', 'Vue', 'Svelte']}
+                  onChange={handleDestinationSelect}
+                  searchable
                 />
               </div>
               <div className="carasoul-main">

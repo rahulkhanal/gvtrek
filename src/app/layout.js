@@ -6,14 +6,16 @@ import { NavProvider } from "./_context/NavContext";
 import { SubNav } from "./_components/SubNav";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import '@mantine/core/styles.css';
+import { MantineProvider } from "@mantine/core";
 
 const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({ weight: "400", subsets: ["latin"] });
 
 export const metadata = {
-  title: "Great Vision Trek and Expedition",
+  title: "Paurakh Travels: The best travel agency in Nepal",
   description:
-    "Explore Nepal with Great Vision Trek and Expedition, your trusted agency to the Himalayan paradise from vibrant Kathmandu. The company provides you with best trekking destination which is solely owned by Nepalese professionals who can lead trekkers and visitors to Nepal’s most visited remote, offbeat and mountainous areas including Himalayas of Nepal, Bhutan, India, and Tibet. ",
+    "Explore Nepal with Paurakh Travels, your trusted agency to the Himalayan paradise from vibrant Kathmandu. The company provides you with best trekking destination which is solely owned by Nepalese professionals who can lead trekkers and visitors to Nepal’s most visited remote, offbeat and mountainous areas including Himalayas of Nepal, Bhutan, India, and Tibet. ",
   icons: {
     icon: "/materials/favicon.png",
   },
@@ -26,7 +28,9 @@ export default function RootLayout({ children }) {
         <NavProvider>
           <Navbar />
           <SubNav />
-          {children}
+          <MantineProvider>
+            {children}
+          </MantineProvider>
           <Footer />
         </NavProvider>
       </body>
