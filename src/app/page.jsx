@@ -6,10 +6,10 @@ import Slider from "react-slick";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import { bannerData } from "@/helpers/rough/rough";
 import Image from "next/image";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useGlobalContext } from "./_context/NavContext";
 import { BarLoader, ScaleLoader } from "react-spinners";
-import { Autocomplete, Box, Button, Center, Divider, Flex, Grid, Group, Paper, Select, Space, Text, Title } from "@mantine/core";
+import { Autocomplete, Avatar, Box, Button, Center, Divider, Flex, Grid, Group, Paper, Rating, Select, Space, Text, Title } from "@mantine/core";
 import Lottie from "react-lottie";
 import * as animationData from '../../loading.json'
 import { MdOutlineTravelExplore } from "react-icons/md";
@@ -17,6 +17,7 @@ import { MdModeOfTravel } from "react-icons/md";
 import { IoMdArrowForward } from "react-icons/io";
 import { LuClock3 } from "react-icons/lu";
 import { FiPieChart } from "react-icons/fi";
+import { Carousel } from "@mantine/carousel";
 
 const NextArrow = ({ onClick }) => (
   <div className="custom-arrow-next" onClick={onClick}>
@@ -70,6 +71,8 @@ export default function Home() {
     arrows: true,
     pauseOnHover: false,
   };
+
+
   if (loader) {
     return (
       <Flex w={200} m={'auto'} direction='column' align={'center'} justify={'center'} mt={'xl'}>
@@ -278,6 +281,43 @@ export default function Home() {
             </Group>
           </Box>
         </Flex>
+      </Box>
+      <Box px={200} my={100}>
+        <Title size={'50'} fw={400}>Don't just take our word</Title>
+        <Text w={800}>
+          At Paurakh Travels, we’re proud to have served adventurers from all corners of the world. Whether it’s trekking through the Himalayas, soaring over mountain peaks on a heli tour, or immersing in local culture, our travelers rave about their unforgettable experiences with us. Here’s what they have to say about their journeys:
+        </Text>
+        <Space h={'lg'} />
+        <Carousel
+          withIndicators
+          height={300}
+          slideSize={{ base: '100%', sm: '50%', md: '33.333333%' }}
+          slideGap={{ base: 0, sm: 'md' }}
+          loop
+          align="start"
+        >
+          {['', '', '', '', '', ''].map((item, index) => {
+            return (
+              <Carousel.Slide key={index}>
+                <Carousel.Slide>
+                  <Paper withBorder shadow="xl" p={'xl'}>
+                    <Rating value={3.5} fractions={2} readOnly />
+                    <Space h={'xl'}></Space>
+                    <Text>"lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum dolor sit amet, consectetur adipiscing elit."</Text>
+                    <Divider my="sm" />
+                    <Flex>
+                      <Avatar src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-7.png" alt="it's me" />
+                      <Flex direction="column" ml={10}>
+                        <Text size="sm">John Doe</Text>
+                        <Text size="xs">France</Text>
+                      </Flex>
+                    </Flex>
+                  </Paper>
+                </Carousel.Slide>
+              </Carousel.Slide>
+            )
+          })}
+        </Carousel>
       </Box>
       <Space h={'xl'} />
     </>

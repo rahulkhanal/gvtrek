@@ -7,6 +7,7 @@ import { SubNav } from "./_components/SubNav";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import '@mantine/core/styles.css';
+import '@mantine/carousel/styles.css';
 import { MantineProvider } from "@mantine/core";
 import { Suspense } from "react";
 
