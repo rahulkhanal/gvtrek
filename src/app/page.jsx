@@ -185,11 +185,11 @@ export default function Home() {
         </Text>
         <Grid py={10} gutter={30}>
           {
-            ['', '', '', ''].map(() => {
+            ['', '', ''].map((item, index) => {
               return (
-                <Grid.Col span={4}>
+                <Grid.Col span={4} key={index}>
                   <Paper withBorder style={{ backgroundColor: '#fff', borderRadius: '10px', overflow: 'hidden' }}>
-                    <Image src={'/imgs/shownepal.jpg'} alt="package" width={'1000'} layout="responsive" height={200} />
+                    <Image src={'/imgs/shownepal.jpg'} alt="package" width={'1000'} height={350} />
                     <Flex direction={'column'}>
                       <Space w={'lg'} />
                       <Flex direction={'column'} p={10}>
@@ -217,7 +217,69 @@ export default function Home() {
             })
           }
         </Grid>
+        <Group justify="flex-end">
+          <Button w={200} variant="outline" radius={30} rightSection={<IoMdArrowForward size={14} />}>View More</Button>
+        </Group>
       </Box>
+      {/* Services */}
+      <Box px={200} my={100}>
+        <Title size={'50'} fw={400} mb={20}>Our Services</Title>
+        <Flex justify={'space-between'} gap={'xl'}>
+          <Paper withBorder shadow="xl" radius='lg' miw={300} p={'lg'} style={{ borderBottom: "2px solid #1C7ED6" }}>
+            <Image src="/imgs/hiking.png" alt="services" width={70} height={100} />
+            <Title order={4}>Trekking Adventures</Title>
+            <Text size="sm">Experience the thrill of trekking through stunning landscapes, from serene valleys to challenging mountain trails. Perfect for adventurers of all levels.
+            </Text>
+          </Paper>
+          <Paper withBorder shadow="xl" radius='lg' miw={300} p={'lg'} style={{ borderBottom: "2px solid #1C7ED6" }}>
+            <Image src="/imgs/heli-service.png" alt="services" width={150} height={90} />
+            <Title order={4}>Heli Tour</Title>
+            <Text size="sm">Soar above breathtaking landscapes with our helicopter tours. Enjoy stunning aerial views of mountains, valleys, and iconic landmarks.</Text>
+          </Paper>
+          <Paper withBorder shadow="xl" radius='lg' miw={300} p={'lg'} style={{ borderBottom: "2px solid #1C7ED6" }}>
+            <Image src="/imgs/hotel.png" alt="services" width={150} height={100} />
+            <Title order={4}>Hotel Reservation</Title>
+            <Text size="sm">
+              Book comfortable accommodations through our easy hotel reservation service. From luxury stays to cozy lodges, we ensure your rest is as enjoyable as your adventure.
+            </Text>
+          </Paper>
+          <Paper withBorder shadow="xl" radius='lg' miw={300} p={'lg'} style={{ borderBottom: "2px solid #1C7ED6" }}>
+            <Image src="/imgs/paragliding.png" alt="services" width={100} height={110} />
+            <Title order={4}>Adventure Activities</Title>
+            <Text size="sm">
+              From paragliding to river rafting, enjoy a range of thrilling activities designed to give you an adrenaline rush and lasting memories.          </Text>
+          </Paper>
+        </Flex>
+      </Box>
+      {/* Book our Heli Tour */}
+      <Box bg={'#F0EBFE'} pt={100}>
+        <Flex gap={50}>
+          <Box style={{ borderRadius: "0 70px 0 0", overflow: 'hidden' }} maw={700} miw={700}>
+            <Image src={'/materials/Heli-tour-in-nepal.jpg'} width={700} height={600}></Image>
+          </Box>
+          <Box pr={10}>
+            <Title c={'#0460C3'} size={'50'} fw={400} mb={20}>Book Heli Tour From <strong>Paurakh Travels</strong></Title>
+            <Text>
+              Looking for a unique and thrilling way to explore the majestic landscapes of Nepal? Book a <strong>heli tour</strong> with <strong>Paurakh Travels</strong> and embark on an unforgettable adventure! Our helicopter tours offer stunning aerial views of Nepal's most iconic landmarks, including the towering peaks of the Himalayas, serene valleys, and ancient cultural sites. Whether you're seeking a bird's-eye view of <strong>Mount Everest</strong>, <strong>the Annapurna Range</strong>, or the <strong>Langtang Valley</strong>, our heli tours provide a once-in-a-lifetime experience.
+              <br />
+              <br />
+              At <strong>Paurakh Travels</strong>, we pride ourselves on offering safe and comfortable helicopter tours, operated by experienced pilots who know the region inside and out. Our <strong>heli tours</strong> are perfect for adventure seekers, nature lovers, and photographers looking to capture breathtaking moments from a unique perspective.
+              <br />
+              <br />
+              Why choose a <strong>heli tour</strong>? Unlike trekking or road trips, a heli tour allows you to cover vast distances in a short amount of time while still enjoying spectacular views. It’s the perfect option for travelers with limited time or those who want a more luxurious and convenient way to explore. With <strong>Paurakh Travels</strong>, you’ll enjoy a smooth and memorable journey, with stops at key scenic points to take in the beauty of Nepal from above.            </Text>
+            <br />
+            Booking a <strong>heli tour</strong> with us is easy! Simply browse our available packages and select the one that fits your schedule and preferences. Whether you’re planning a solo trip, a romantic getaway, or a family adventure, we’ve got the perfect <strong>heli tour</strong> for you.
+            Experience Nepal like never before! Book your heli tour with Paurakh Travels today and get ready for the adventure of a lifetime. Don’t miss out on this incredible opportunity to see the beauty of Nepal from the sky!
+            <br />
+            <br />
+            <Group>
+              <Button>Book Here</Button>
+              <Button>Contact Us</Button>
+            </Group>
+          </Box>
+        </Flex>
+      </Box>
+      <Space h={'xl'} />
     </>
   );
 }

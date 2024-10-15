@@ -8,6 +8,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import '@mantine/core/styles.css';
 import { MantineProvider } from "@mantine/core";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({ weight: "400", subsets: ["latin"] });
@@ -24,16 +25,18 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={poppins.className} suppressHydrationWarning={true}>
-        <NavProvider>
-          <Navbar />
-          <SubNav />
-          <MantineProvider>
-            {children}
-          </MantineProvider>
-          <Footer />
-        </NavProvider>
-      </body>
+      <Suspense fallback={<div>Loading...</div>}>
+        <body className={poppins.className} suppressHydrationWarning={true}>
+          <NavProvider>
+            <Navbar />
+            <SubNav />
+            <MantineProvider>
+              {children}
+            </MantineProvider>
+            <Footer />
+          </NavProvider>
+        </body>
+      </Suspense>
     </html>
   );
 }
